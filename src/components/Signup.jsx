@@ -12,7 +12,7 @@ const Signup = () => {
     password: '', 
     schoolId: '' 
   });
-  const [role, setRole] = useState('admin'); // 'admin' = Owner, 'teacher' = Staff
+  const [role, setRole] = useState(''); // Initialize as empty
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
@@ -25,16 +25,13 @@ const Signup = () => {
         const res = await axios.get('/api/auth/check-admin');
         if (res.data.exists) {
           setAdminExists(true);
-          setRole('teacher'); // Default to teacher if admin exists
-          
-          // Also fetch the admin's school info to pre-fill schoolId
-          const settingsRes = await axios.get('/api/auth/school-settings-public');
-          if (settingsRes.data.schoolId) {
-            setFormData(prev => ({ ...prev, schoolId: settingsRes.data.schoolId }));
-          }
+          setRole('teacher'); // Force teacher if admin exists
+        } else {
+          setRole('admin'); // First user is admin
         }
       } catch (err) {
         console.error('Error checking admin existence:', err);
+        setRole('admin'); // Fallback
       }
     };
     checkAdmin();
@@ -56,7 +53,7 @@ const Signup = () => {
     if (!result.success) {
       setError(result.message);
     } else {
-      setSuccess(`${role === 'admin' ? 'Owner' : 'Teacher'} account created successfully! Redirecting to login...`);
+      setSuccess(`${adminExists ? 'Teacher' : 'Owner'} account created successfully! Redirecting to login...`);
       setTimeout(() => navigate('/login'), 2000);
     }
 
@@ -68,29 +65,8 @@ const Signup = () => {
       <div className="max-w-md w-full">
         {/* Role Selector Tabs */}
         {!adminExists ? (
-          <div className="flex bg-white p-1.5 rounded-2xl shadow-sm mb-6 border border-slate-100">
-            <button
-              onClick={() => setRole('admin')}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all ${
-                role === 'admin' 
-                  ? 'bg-primary text-white shadow-lg' 
-                  : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
-              }`}
-            >
-              <UserCheck size={18} />
-              Owner
-            </button>
-            <button
-              onClick={() => setRole('teacher')}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all ${
-                role === 'teacher' 
-                  ? 'bg-secondary text-white shadow-lg' 
-                  : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
-              }`}
-            >
-              <User size={18} />
-              Staff
-            </button>
+          <div className="bg-blue-50 text-blue-700 p-4 rounded-2xl mb-6 text-center text-sm font-bold border border-blue-100">
+            Initial setup. First account will be the Owner.
           </div>
         ) : (
           <div className="bg-orange-50 text-orange-700 p-4 rounded-2xl mb-6 text-center text-sm font-bold border border-orange-100">
@@ -175,9 +151,8 @@ const Signup = () => {
                   value={formData.schoolId}
                   onChange={handleChange}
                   placeholder="Enter School ID"
-                  className={`w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all font-medium ${adminExists ? 'cursor-not-allowed opacity-75' : ''}`}
+                  className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all font-medium"
                   required
-                  readOnly={adminExists}
                 />
               </div>
             </div>
