@@ -32,9 +32,17 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Section */}
-          <div className="space-y-6">
-            <img src={Logo} alt="Laxmi Enterprises" className="h-16 w-auto object-contain brightness-0 invert" />
-            <p className="text-gray-400 leading-relaxed font-inter">
+          <div className="flex flex-col gap-6">
+              <a href="/" className="inline-block group w-fit">
+                <div className="bg-white/10 p-3 rounded-2xl backdrop-blur-md border border-white/20 transition-all group-hover:bg-white/20">
+                  <img 
+                    src={Logo} 
+                    alt="Laxmi Enterprises" 
+                    className="h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-500" 
+                  />
+                </div>
+              </a>
+              <p className="text-gray-400 leading-relaxed font-inter max-w-xs">
               Your premium partner for all business and local services in Garur, Bageshwar. Delivering quality and trust for over 15 years.
             </p>
             <div className="flex gap-4">
