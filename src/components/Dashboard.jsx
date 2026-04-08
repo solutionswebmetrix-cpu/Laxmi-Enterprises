@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import Logo from '../assets/Logo/Logo.png';
 import {
   LayoutDashboard,
   Users,
@@ -46,8 +47,10 @@ const Dashboard = () => {
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       } transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 flex flex-col`}>
         <div className="flex-shrink-0">
-          <div className="flex items-center justify-between h-16 px-6 border-b border-gray-100">
-            <Link to="/" className="text-xl font-black text-primary tracking-tighter">LAXMI ENT.</Link>
+          <div className="flex items-center justify-between h-20 px-6 border-b border-gray-100">
+            <Link to="/" className="shrink-0 flex items-center">
+              <img src={Logo} alt="Laxmi Enterprises" className="h-12 w-auto object-contain" />
+            </Link>
             <button
               onClick={() => setSidebarOpen(false)}
               className="lg:hidden text-gray-500 hover:text-gray-700"

@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { User, UserCheck, Mail, Lock, School, UserPlus } from 'lucide-react';
 import axios from 'axios';
+import Logo from '../assets/Logo/Logo.png';
 
 const Signup = () => {
   const { signup } = useAuth();
@@ -76,6 +77,7 @@ const Signup = () => {
 
         <div className="bg-white rounded-3xl shadow-2xl p-8 border border-slate-100">
           <div className="text-center mb-8">
+            <img src={Logo} alt="Laxmi Enterprises" className="h-16 w-auto mx-auto mb-4 object-contain" />
             <h2 className="text-3xl font-extrabold text-slate-900 mb-2 font-poppins tracking-tight">
               {role === 'admin' ? 'Owner Registration' : 'Teacher Registration'}
             </h2>

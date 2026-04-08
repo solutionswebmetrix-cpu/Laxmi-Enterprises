@@ -3,6 +3,7 @@ import { Menu, X, Phone, ChevronDown, LayoutDashboard, LogOut } from 'lucide-rea
 import { Link, useLocation } from 'react-router-dom';
 import { categories } from '../data/servicesData.jsx';
 import { useAuth } from '../contexts/AuthContext';
+import Logo from '../assets/Logo/Logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +51,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="shrink-0 flex items-center group">
-            <span className="text-2xl font-bold font-poppins text-primary group-hover:scale-105 transition-transform">Laxmi<span className="text-secondary">Enterprises</span></span>
+            <img src={Logo} alt="Laxmi Enterprises" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">

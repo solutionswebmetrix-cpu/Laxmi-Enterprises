@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Mail, Lock, User, UserCheck } from 'lucide-react';
+import Logo from '../assets/Logo/Logo.png';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -59,6 +60,7 @@ const Login = () => {
 
         <div className="bg-white rounded-3xl shadow-2xl p-8 border border-slate-100">
           <div className="text-center mb-8">
+            <img src={Logo} alt="Laxmi Enterprises" className="h-16 w-auto mx-auto mb-4 object-contain" />
             <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Welcome Back</h2>
             <p className="text-slate-500 font-medium">
               Login to your <span className="text-primary font-bold">{role === 'admin' ? 'Owner' : 'Staff'}</span> account

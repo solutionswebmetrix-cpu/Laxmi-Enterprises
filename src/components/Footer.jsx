@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight, Heart } from 'lucide-react';
+import Logo from '../assets/Logo/Logo.png';
 
 const Footer = () => {
   const quickLinks = [
@@ -32,7 +33,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Section */}
           <div className="space-y-6">
-            <span className="text-3xl font-bold font-poppins text-white">Laxmi<span className="text-primary">Enterprises</span></span>
+            <img src={Logo} alt="Laxmi Enterprises" className="h-16 w-auto object-contain brightness-0 invert" />
             <p className="text-gray-400 leading-relaxed font-inter">
               Your premium partner for all business and local services in Garur, Bageshwar. Delivering quality and trust for over 15 years.
             </p>
