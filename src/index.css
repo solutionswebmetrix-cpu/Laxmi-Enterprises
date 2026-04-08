@@ -1,25 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-primary: #4f46e5; /* Indigo */
   --color-secondary: #f97316; /* Orange */
-  --font-poppins: "Poppins", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
-    font-family: var(--font-inter);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color: #1f2937;
     background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-poppins);
+    font-family: 'Poppins', system-ui, sans-serif;
   }
 }
 
